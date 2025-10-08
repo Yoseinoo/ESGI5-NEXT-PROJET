@@ -15,4 +15,8 @@ Gist de notation du projet : https://gist.github.com/blipn/86ec3df30dd85b84c00c6
 - Application next.js
 - BDD mongo (avec Atlas)
 - NextAuth pour l'authentification
-- API pour récupération des données : https://tcgdex.dev
+- API pour récupération des données : https://tcgdex.dev - endpoint de test : https://api.tcgdex.net/v2/fr/sets
+
+## Déploiement
+L'application est déployée sur Vercel : https://esgi-5-next-projet.vercel.app
+La BDD est déployée sur Atlas
