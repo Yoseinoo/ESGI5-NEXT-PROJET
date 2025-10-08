@@ -9,7 +9,7 @@ export default async function Home() {
 
     return (
         <div>
-            <SetsContainer />
+            <SetsContainer sets={sets} />
         </div>
     );
 }
