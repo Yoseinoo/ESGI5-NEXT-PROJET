@@ -1,7 +1,17 @@
 import fetcher from "./fetcher";
 
 const BASE_URL = process.env.EXTERNAL_API_URL;
-const API_KEY = process.env.EXTERNAL_API_KEY;
+
+// Define a type for your sets
+export interface PokemonSet {
+    id: string;
+    name: string;
+    logo: string;
+    cardCount: {
+        total: number,
+        official: number
+    }
+}
 
 // Fetch sets
 export async function getSets(): Promise<[]> {
