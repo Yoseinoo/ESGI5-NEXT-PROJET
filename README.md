@@ -1,6 +1,7 @@
 # ESGI 5 - NEXTJS - PROJET  
 L'objectif de ce projet est de créer une application avec NEXT.js.  
-L'application est un simulateur d'ouverture de booster de cartes pokemon.
+L'application est un simulateur d'ouverture de booster de cartes pokemon.  
+Gist de notation du projet : https://gist.github.com/blipn/86ec3df30dd85b84c00c68e0fbd4a1f5
 
 ## Fonctionnalités
 - Ouverture de booster
@@ -14,3 +15,4 @@ L'application est un simulateur d'ouverture de booster de cartes pokemon.
 - Application next.js
 - BDD mongo (avec Atlas)
 - NextAuth pour l'authentification
+- API pour récupération des données : https://docs.pokemontcg.io
