@@ -15,4 +15,4 @@ Gist de notation du projet : https://gist.github.com/blipn/86ec3df30dd85b84c00c6
 - Application next.js
 - BDD mongo (avec Atlas)
 - NextAuth pour l'authentification
-- API pour récupération des données : https://docs.pokemontcg.io
+- API pour récupération des données : https://tcgdex.dev
