@@ -5,7 +5,7 @@ export default function SetsContainer({ sets }: { sets: any[] }) {
     return (
         <ul>
             {sets.map((s) => (
-                <li key={s.id}>{s.name}</li>
+                <li key={s.id}><a href={"/booster/" + s.id}>{s.name}</a></li>
             ))}
         </ul>
     );
