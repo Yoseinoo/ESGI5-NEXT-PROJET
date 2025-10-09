@@ -1,7 +1,8 @@
 "use client";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function SetsContainer({ sets }: { sets: any[] }) {
+import { TcgSet } from "../lib/externalApi";
+
+export default function SetsContainer({ sets }: { sets: Array<TcgSet> }) {
     return (
         <ul>
             {sets.map((s) => (
