@@ -10,7 +10,7 @@ export default function BoosterOpener({ cards }: { cards: [] }) {
 
     async function handleOpenBooster() {
         const newBooster = await createBooster(cards);
-        console.log(newBooster);
+        // console.log(newBooster);
         setBooster(newBooster);
     }
 
