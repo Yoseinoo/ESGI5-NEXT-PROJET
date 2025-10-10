@@ -6,7 +6,7 @@ import { connectToDatabase } from "./mongodb";
 import { User } from "./models/User";
 import bcrypt from "bcrypt";
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
