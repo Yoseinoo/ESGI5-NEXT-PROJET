@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import { SessionProvider } from "next-auth/react";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import AuthSync from "./components/AuthSync";
+import { AppProviders } from "./providers";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,8 +31,16 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-                <Header />
-                <main className="flex-1 container mx-auto px-4 py-8">{children}</main>
+                <AppProviders>
+                    {/* Ajoute le composant de synchro entre next-auth et redux */}
+                    <AuthSync />
+
+                    {/* Header */}
+                    <Header />
+
+                    {/* Contenu principal */}
+                    <main className="flex-1 container mx-auto px-4 py-8">{children}</main>
+                </AppProviders>
             </body>
         </html>
     );

@@ -24,7 +24,7 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                     // Get the user
                     await connectToDatabase();
                     const user = await User.findOne({
-                        email: credentials.email,
+                        email: email,
                     });
                     if (!user || !user.password) return null;
 

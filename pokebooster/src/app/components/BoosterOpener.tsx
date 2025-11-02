@@ -45,7 +45,7 @@ export default function BoosterOpener({ sets }: { sets: Array<TcgSet> }) {
             <button
                 onClick={() => handleOpenBooster()}
                 className="bg-blue-600 text-white px-4 py-2 rounded"
-                disabled={loading}
+                disabled={loading || cards.length < 1}
             >
                 Open Booster
             </button>
