@@ -9,7 +9,7 @@ export interface IUser extends Document {
 const UserSchema: Schema<IUser> = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true }
 });
 
 // Avoid model overwrite issues in dev (Next.js reloads)
