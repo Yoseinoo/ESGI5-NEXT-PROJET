@@ -5,7 +5,7 @@ export async function GET(
     _req: Request,
     { params }: { params: { id: string } }
 ) {
-    const { id } = await params;
+    const { id } = params;
 
     if (!id) {
         return NextResponse.json({ error: "Missing set ID" }, { status: 400 });
