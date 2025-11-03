@@ -20,12 +20,12 @@ export interface Card {
 export async function getSets(): Promise<Array<TcgSet>> {
     if (!BASE_URL) throw new Error('Missing EXTERNAL_API_URL');
 
-    return fetcher<Array<TcgSet>>(`${BASE_URL}/sets`);
+    return fetcher<Array<TcgSet>>(`${BASE_URL}/sets`, { cache: 'force-cache', next: { revalidate: 3600 } });
 }
 
 // Fetch infos for a single set with its setId
 export async function getSet(setId: string): Promise<TcgSet> {
     if (!BASE_URL) throw new Error('Missing EXTERNAL_API_URL');
 
-    return fetcher<TcgSet>(`${BASE_URL}/sets/${setId}`);
+    return fetcher<TcgSet>(`${BASE_URL}/sets/${setId}`, { cache: 'force-cache', next: { revalidate: 3600 } });
 }
