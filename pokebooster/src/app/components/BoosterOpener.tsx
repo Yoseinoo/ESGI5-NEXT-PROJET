@@ -59,9 +59,9 @@ export default function BoosterOpener({ sets }: { sets: Array<TcgSet> }) {
     }
 
     return (
-        <div>
+        <div className="flex flex-col gap-2.5">
             {!user.isAuthenticated && <p>Veuillez vous connecter pour ouvrir des boosters</p>}
-            <select id="setSelector" value={selectedSet} onChange={(e) => setSelectedSet(e.target.value)}>
+            <select id="setSelector" className="h-10" value={selectedSet} onChange={(e) => setSelectedSet(e.target.value)}>
                 {sets.map((s) => (
                     <option key={s.id} value={s.id}>{s.name}</option>
                 ))}
