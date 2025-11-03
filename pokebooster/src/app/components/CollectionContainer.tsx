@@ -68,7 +68,7 @@ export default function CollectionContainer() {
     return (
         <div>
             {/* Filters */}
-            <div className="flex flex-wrap gap-4 mb-4">
+            <div className="flex flex-wrap gap-4 mb-4 justify-center items-center">
                 <div>
                     <label className="mr-2 font-semibold">Filter by Set:</label>
                     <select

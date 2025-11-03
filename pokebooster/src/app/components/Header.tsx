@@ -21,7 +21,7 @@ export default function Header() {
     }
 
     return (
-        <header className="flex justify-between items-center bg-white/70 backdrop-blur-md shadow-md px-6 py-4">
+        <header className="flex justify-between items-center bg-white/70 backdrop-blur-md shadow-md px-6 py-4 text-black">
             <Link href="/" className="text-2xl font-bold text-yellow-600">
                 PokéBoosters
             </Link>
