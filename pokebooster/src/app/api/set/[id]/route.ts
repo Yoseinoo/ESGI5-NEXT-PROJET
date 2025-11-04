@@ -1,11 +1,18 @@
 import { getSet } from "@/app/lib/externalApi";
 import { NextResponse } from "next/server";
+import { auth } from "@/app/lib/auth";
 
 export async function GET(
     _req: Request,
-    { params }: { params: Promise<{ id: string; }>; }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const { id } = await params;
+
+    const session = await auth();
+
+    if (!session) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
     if (!id) {
         return NextResponse.json({ error: "Missing set ID" }, { status: 400 });
@@ -14,7 +21,7 @@ export async function GET(
     try {
         const setData = await getSet(id); // use your helper
         return NextResponse.json(setData);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
         return NextResponse.json(
             { error: err.message || "Failed to fetch set" },

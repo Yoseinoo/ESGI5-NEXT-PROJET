@@ -42,7 +42,6 @@ export default function BoosterOpener({ sets }: { sets: Array<TcgSet> }) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                "userEmail": user.email,
                 "cards": newBooster,
                 "set": tcgSet
             }),

@@ -20,7 +20,7 @@ export default function CollectionContainer() {
         const fetchCards = async () => {
             if (!user.isAuthenticated) return;
 
-            const res = await fetch(`/api/collection/get?email=${encodeURIComponent(user.email ?? "")}`);
+            const res = await fetch('/api/collection/get');
             const data = await res.json();
 
             if (res.ok) {
