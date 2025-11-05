@@ -6,8 +6,10 @@ import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/userSlice";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function LoginForm() {
+    const t = useTranslations();
     const [form, setForm] = useState({ email: "", password: "" });
     const [errorMessage, setErrorMessage] = useState<string|undefined>(undefined);
 
@@ -53,13 +55,13 @@ export default function LoginForm() {
                 className="w-80 bg-white p-6 rounded-xl shadow-md flex flex-col gap-4"
             >
                 <h1 className="text-2xl font-semibold text-center mb-2">
-                    Login
+                    {t("login-title")}
                 </h1>
 
                 <input
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder={t("placeholder-email")}
                     value={form.email}
                     onChange={handleChange}
                     required
@@ -68,7 +70,7 @@ export default function LoginForm() {
                 <input
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder={t("placeholder-password")}
                     value={form.password}
                     onChange={handleChange}
                     required
@@ -95,16 +97,16 @@ export default function LoginForm() {
                     type="submit"
                     className="bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
                 >
-                    Login
+                    {t("button-login")}
                 </button>
 
                 <p className="text-sm text-center">
-                    Don’t have an account?{" "}
+                    {t("login-ask-register")}<br />
                     <a
                         href="/register"
                         className="text-blue-600 hover:underline"
                     >
-                        Register
+                        {t("button-register")}
                     </a>
                 </p>
             </form>

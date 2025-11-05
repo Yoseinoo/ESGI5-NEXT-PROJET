@@ -5,10 +5,13 @@ import { RootState } from "../store/store";
 import { useEffect, useState } from "react";
 import { ICard } from "../lib/models/Card";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 type SortOption = "nameAsc" | "nameDesc" | "quantityAsc" | "quantityDesc";
 
 export default function CollectionContainer() {
+    const t = useTranslations();
     const [cards, setCards] = useState<ICard[]>([]);
     const [filteredCards, setFilteredCards] = useState<ICard[]>([]);
     const [selectedSet, setSelectedSet] = useState<string>("All");
@@ -67,6 +70,13 @@ export default function CollectionContainer() {
 
     return (
         <div>
+            <div className="flex flex-col gap-2.5 mb-4 justify-center items-center">
+                <h1 className="title">{t("collection-title")}</h1>
+                <Link href="/booster" className="px-6 py-3 rounded-xl bg-red-500 text-white font-bold hover:bg-red-600 transition">
+                    {t("button-open-booster")}
+                </Link>
+            </div>
+
             {/* Filters */}
             <div className="flex flex-wrap gap-4 mb-4 justify-center items-center">
                 <div>
@@ -76,7 +86,7 @@ export default function CollectionContainer() {
                         onChange={(e) => setSelectedSet(e.target.value)}
                         className="border rounded p-1"
                     >
-                        <option value="All">All</option>
+                        <option value="All">{t("filter-by-set")}</option>
                         {setNames.map((set) => (
                             <option key={set} value={set}>
                                 {set}
@@ -86,16 +96,16 @@ export default function CollectionContainer() {
                 </div>
 
                 <div>
-                    <label className="mr-2 font-semibold">Sort by:</label>
+                    <label className="mr-2 font-semibold">{t("sort-by")}:</label>
                     <select
                         value={sortOption}
                         onChange={(e) => setSortOption(e.target.value as SortOption)}
                         className="border rounded p-1"
                     >
-                        <option value="nameAsc">Name ↑</option>
-                        <option value="nameDesc">Name ↓</option>
-                        <option value="quantityAsc">Quantity ↑</option>
-                        <option value="quantityDesc">Quantity ↓</option>
+                        <option value="nameAsc">{t("sort-name-asc")}</option>
+                        <option value="nameDesc">{t("sort-name-desc")}</option>
+                        <option value="quantityAsc">{t("sort-quantity-asc")}</option>
+                        <option value="quantityDesc">{t("sort-quantity-desc")}</option>
                     </select>
                 </div>
             </div>
@@ -111,12 +121,12 @@ export default function CollectionContainer() {
                             <Image src={card.image + "/high.webp"} alt={card.name} className="h-full object-cover mb-2 rounded" width={250} height={250} />
                         ) : (
                             <div className="w-full h-32 bg-gray-200 mb-2 rounded flex items-center justify-center">
-                                No Image
+                                {t("no-image")}
                             </div>
                         )}
                         <h3 className="font-semibold text-lg text-black">{card.name}</h3>
                         <p className="text-sm text-gray-500">{card.setName}</p>
-                        <p className="text-sm text-gray-500">Quantity: {card.quantity}</p>
+                        <p className="text-sm text-gray-500">{t("quantity")}: {card.quantity}</p>
                     </div>
                 ))}
             </div>

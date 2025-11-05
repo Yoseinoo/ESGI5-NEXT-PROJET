@@ -6,8 +6,10 @@ import Image from "next/image";
 import { Card, TcgSet } from "../lib/externalApi";
 import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
+import { useTranslations } from "next-intl";
 
 export default function BoosterOpener({ sets }: { sets: Array<TcgSet> }) {
+    const t = useTranslations();
     const [booster, setBooster] = useState<Array<Card>>([]);
     const [selectedSet, setSelectedSet] = useState<string>();
     const [cards, setCards] = useState<Array<Card>>([]);
@@ -59,7 +61,7 @@ export default function BoosterOpener({ sets }: { sets: Array<TcgSet> }) {
 
     return (
         <div className="flex flex-col gap-2.5">
-            {!user.isAuthenticated && <p>Veuillez vous connecter pour ouvrir des boosters</p>}
+            {!user.isAuthenticated && <p>{t("booster-opener-ask-auth")}</p>}
             <select id="setSelector" className="h-10" value={selectedSet} onChange={(e) => setSelectedSet(e.target.value)}>
                 {sets.map((s) => (
                     <option key={s.id} value={s.id}>{s.name}</option>
@@ -70,7 +72,7 @@ export default function BoosterOpener({ sets }: { sets: Array<TcgSet> }) {
                 className="bg-blue-600 text-white px-4 py-2 rounded"
                 disabled={loading || cards.length < 1 || !user.isAuthenticated}
             >
-                Open Booster
+                {t("button-open-booster")}
             </button>
             <div className="mt-6 w-full flex flex-row items-center flex-wrap justify-between gap-2.5">
                 {booster.map((card) => (

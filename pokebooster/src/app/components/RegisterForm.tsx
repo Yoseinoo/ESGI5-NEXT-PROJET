@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function RegisterForm() {
+    const t = useTranslations();
     const router = useRouter();
     const [form, setForm] = useState({ name: "", email: "", password: "" });
     const [error, setError] = useState<string | null>(null);
@@ -41,13 +43,13 @@ export default function RegisterForm() {
                 className="w-80 bg-white p-6 rounded-xl shadow-md flex flex-col gap-4"
             >
                 <h1 className="text-2xl font-semibold text-center mb-2">
-                    Register
+                    {t("register-title")}
                 </h1>
 
                 <input
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder={t("placeholder-name")}
                     value={form.name}
                     onChange={handleChange}
                     required
@@ -56,7 +58,7 @@ export default function RegisterForm() {
                 <input
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder={t("placeholder-email")}
                     value={form.email}
                     onChange={handleChange}
                     required
@@ -65,7 +67,7 @@ export default function RegisterForm() {
                 <input
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder={t("placeholder-password")}
                     value={form.password}
                     onChange={handleChange}
                     required
@@ -85,9 +87,9 @@ export default function RegisterForm() {
                 </button>
 
                 <p className="text-sm text-center">
-                    Already have an account?{" "}
+                    {t("register-ask-login")} <br />
                     <a href="/login" className="text-blue-600 hover:underline">
-                        Login
+                        {t("button-login")}
                     </a>
                 </p>
             </form>
